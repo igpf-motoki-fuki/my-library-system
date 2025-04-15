@@ -1,0 +1,43 @@
+import '../models/book.dart';
+
+final List<Book> sampleBooks = [
+  Book(
+    id: 1,
+    isbn: '9784004161017',
+    title: '吾輩は猫である',
+    author: '夏目漱石',
+    publisher: '岩波書店',
+    publishedDate: DateTime(1905, 1, 1),
+    classification: '913.6',
+    description: '吾輩は猫である。名前はまだ無い。',
+    status: 'available',
+    createdAt: DateTime.now(),
+    updatedAt: DateTime.now(),
+  ),
+  Book(
+    id: 2,
+    isbn: '9784003101018',
+    title: '人間失格',
+    author: '太宰治',
+    publisher: '新潮社',
+    publishedDate: DateTime(1948, 6, 15),
+    classification: '913.6',
+    description: '人間失格。',
+    status: 'available',
+    createdAt: DateTime.now(),
+    updatedAt: DateTime.now(),
+  ),
+  Book(
+    id: 3,
+    isbn: '9784003101019',
+    title: '羅生門',
+    author: '芥川龍之介',
+    publisher: '新潮社',
+    publishedDate: DateTime(1915, 11, 1),
+    classification: '913.6',
+    description: '羅生門。',
+    status: 'lent',
+    createdAt: DateTime.now(),
+    updatedAt: DateTime.now(),
+  ),
+]; 

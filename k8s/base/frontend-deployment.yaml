@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: my-library-system
+      component: frontend
+  template:
+    metadata:
+      labels:
+        app: my-library-system
+        component: frontend
+    spec:
+      containers:
+      - name: frontend
+        image: my-library-system-frontend:latest
+        ports:
+        - containerPort: 8080
+        env:
+        - name: VUE_APP_API_URL
+          value: "http://backend"
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "100m"
+          limits:
+            memory: "512Mi"
+            cpu: "200m"
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+spec:
+  selector:
+    app: my-library-system
+    component: frontend
+  ports:
+  - port: 80
+    targetPort: 8080
+  type: ClusterIP 
